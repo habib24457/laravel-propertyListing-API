@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\BrokerController;
+use App\Http\Controllers\BrokersController;
 use App\Http\Controllers\PropertiesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,10 +24,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //public routes
 Route::post('/login',[AuthController::class,'login']);
 Route::post('/register',[AuthController::class,'register']);
-Route::get('/brokers', [BrokerController::class, 'index'])->name('brokers.index');
-Route::get('/brokers/{broker}', [BrokerController::class, 'show'])->name('brokers.show');
-Route::get('/properties', [BrokerController::class, 'index'])->name('brokers.index');
-Route::get('/properties/{property}', [BrokerController::class, 'show'])->name('brokers.show');
+Route::get('/brokers', [BrokersController::class, 'index'])->name('brokers.index');
+Route::get('/brokers/{broker}', [BrokersController::class, 'show'])->name('brokers.show');
+Route::post('/brokers',[BrokersController::class,'store']);
+Route::get('/properties', [BrokersController::class, 'index'])->name('brokers.index');
+Route::get('/properties/{property}', [BrokersController::class, 'show'])->name('brokers.show');
 
 //Protected routes
 Route::group(['middleware'=>['auth:sanctum']], function(){
